@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "packageManager": "pnpm@8.15.1",
+  "scripts": {
+    "build": "turbo run build:tailwind build --filter=./packages/\\*",
+    "build:all": "turbo run build:tailwind build",
+    "build:core": "pnpm build --filter=nextra",
+    "build:theme-blog": "pnpm build --filter=nextra-theme-blog",
+    "build:theme-docs": "pnpm build --filter=nextra-theme-docs",
+    "clean": "turbo run clean",
+    "dev:core": "turbo run dev --filter=nextra... --filter=!docs",
+    "dev:theme-blog": "turbo run dev --filter=example-blog... --filter=!docs",
+    "dev:theme-docs": "turbo run dev --filter=swr-site... --filter=!docs",
+    "dev:website": "turbo run dev --filter=docs...",
+    "lint": "eslint --cache --ignore-path .gitignore --max-warnings 0 .",
+    "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
+    "prettier": "pnpm lint:prettier --write",
+    "release": "changeset publish",
+    "test": "turbo run test",
+    "types:check": "turbo run types:check",
+    "version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.26.2",
+    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
+    "@next/eslint-plugin-next": "14.0.4",
+    "@rollup/plugin-alias": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "6.19.0",
+    "@typescript-eslint/parser": "6.19.0",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-sonarjs": "^0.23.0",
+    "eslint-plugin-tailwindcss": "3.14.0",
+    "eslint-plugin-typescript-sort-keys": "3.1.0",
+    "eslint-plugin-unicorn": "50.0.1",
+    "prettier": "3.0.3",
+    "prettier-plugin-pkg": "0.18.0",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "rimraf": "5.0.5",
+    "tsup": "8.0.1",
+    "tsx": "^4.7.0",
+    "turbo": "1.12.4",
+    "typescript": "5.3.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": "^0.19.3",
+      "next": "13.5.6"
+    },
+    "patchedDependencies": {
+      "@changesets/assemble-release-plan@5.2.4": "patches/@changesets__assemble-release-plan@5.2.4.patch",
+      "tsup@8.0.1": "patches/tsup@8.0.1.patch"
+    }
+  }
+}
